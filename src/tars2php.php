@@ -329,6 +329,8 @@ class FileConverter
     public function initDir()
     {
         if (strtolower(substr(php_uname('a'), 0, 3)) === 'win') {
+            $this->outputDir = str_replace('/', '\\', $this->outputDir);
+            $this->fromFile = str_replace('/', '\\', $this->fromFile);
             exec('mkdir '.$this->outputDir.$this->appName);
             exec('mkdir '.$this->outputDir.$this->appName.'\\'.$this->serverName);
             exec('DEL '.$this->outputDir.$this->appName.'\\'.$this->serverName.'\\'.$this->objName.'\\*.*');
